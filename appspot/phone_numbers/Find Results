@@ -1,0 +1,355 @@
+Searching 298 files for "charfield"
+
+/Users/admin/Documents/work/appspot/appspot/addresses/models.py:
+   16  	person = models.ForeignKey(Person, blank=False, null=False, verbose_name=_('Person'), related_name='addresses')
+   17  	company = models.ForeignKey(Company, blank=False, null=False, verbose_name=_('Company'), related_name='addresses')
+   18: 	address_type = models.CharField(verbose_name=_('Address type'), choices=ADDRESS_TYPE)
+   19  	location_address = USZipCodeField(max_length=9, help_text=_(''), blank=False, null=False)
+   20: 	address_label = models.CharField(verbose_name=_('Address label'), max_length=100, blank=False, null=False)
+   21: 	record_owner = models.CharField(verbose_name=_('Record owner'), max_length=100, blank=False, null=False)
+   22  	record_creation_date = models.DateField(help_text=_(''))
+   23  
+
+/Users/admin/Documents/work/appspot/appspot/assignments/models.py:
+   13  	start_address = USZipCodeField(max_length=9, help_text=_(''), blank=False, null=False)
+   14  	investigator_id = models.IntegerField(verbose_name=_('Investigator ID'), unique=False, blank=False, null=False)
+   15: 	record_owner = models.CharField(verbose_name=_('Record owner'), max_length=100, blank=False, null=False)
+   16  	record_creation_date = models.DateField(help_text=_(''))
+   17  
+
+/Users/admin/Documents/work/appspot/appspot/auto_text_fields/models.py:
+    7  	auto_text_field_id = models.AutoField(primary_key=True)
+    8  	parent_auto_text_field = models.ForeignKey(Auto_text, blank=False, null=False, verbose_name=_('Auto_text'), related_name='fields')
+    9: 	field_name = models.CharField(verbose_name=_('Text'), max_length=100, blank=False, null=False)
+   10  
+   11  	class Meta:
+
+/Users/admin/Documents/work/appspot/appspot/auto_texts/models.py:
+    4  class Auto_text(models.Model):
+    5  	auto_text_id = models.AutoField(primary_key=True)
+    6: 	label = models.CharField(verbose_name=_('Label'), max_length=100, blank=False, null=False)
+    7: 	atext = models.CharField(verbose_name=_('Text'), max_length=100, blank=False, null=False)
+    8  
+    9  	class Meta:
+
+/Users/admin/Documents/work/appspot/appspot/case_equipments/models.py:
+    6  class Case_equipment(models.Model):
+    7  	case_equipment_id = models.AutoField(primary_key=True)
+    8: 	serial_number = models.CharField(verbose_name=_('Serial number'), max_length=100, blank=False, null=False)
+    9  	email_address = models.EmailField(verbose_name=_('Email address'), max_length=254, unique=True)
+   10: 	password = models.CharField(verbose_name=_('Password'), max_length=100, blank=False, null=False)
+   11: 	service_status = models.CharField(verbose_name=_('Service status'), max_length=100, blank=False, null=False)
+   12  	date_purchased = models.DateField(help_text=_(''), blank=False, null=False)
+   13  	price = models.FloatField(help_text=_(''), blank=False, null=False)
+   14: 	comments = models.CharField(verbose_name=_('Comments'), max_length=100, blank=False, null=False)
+   15: 	equipment_type = models.CharField(verbose_name=_('Equipment type'), max_length=100, blank=False, null=False)
+   16  	vehicle = models.ForeignKey(Vehicle, blank=False, null=False, verbose_name=_('Vehicle'), related_name='case_equipment')
+   17  
+
+/Users/admin/Documents/work/appspot/appspot/case_expenses/models.py:
+   10  	investigator_id = models.IntegerField(verbose_name=_('Investigator ID'), unique=False, blank=False, null=False)
+   11  	expense_date = models.DateField(help_text=_(''), blank=False, null=False)
+   12: 	description = models.CharField(verbose_name=_('Description'), max_length=100, blank=False, null=False)
+   13  	amount = models.FloatField(verbose_name=_('Amount'), unique=False, blank=False, null=False)
+   14  	total = models.FloatField(verbose_name=_('Total'), unique=False, blank=False, null=False)
+
+/Users/admin/Documents/work/appspot/appspot/case_sequences/models.py:
+    7  	case_year = models.IntegerField(verbose_name=_('Case year'), unique=False, blank=False, null=False)
+    8  	case_sequence_number = models.IntegerField(verbose_name=_('Sequence number'), unique=False, blank=False, null=False)
+    9: 	case_number = models.CharField(verbose_name=_('Number'), max_length=100, blank=False, null=False)
+   10  
+   11  	class Meta:
+
+/Users/admin/Documents/work/appspot/appspot/case_status/models.py:
+   15  class Case_status(models.Model):
+   16  	case_status_id = models.AutoField(primary_key=True)
+   17: 	case_status = models.CharField(verbose_name=_('Case status'), max_length=100, blank=False, null=False, choices=STATUS)
+   18  
+   19  	class Meta:
+
+/Users/admin/Documents/work/appspot/appspot/case_types/models.py:
+    4  class Case_type(models.Model):
+    5  	case_type_id = models.AutoField(primary_key=True)
+    6: 	case_type = models.CharField(verbose_name=_('Case status'), max_length=100, blank=False, null=False)
+    7  
+    8  	class Meta:
+
+/Users/admin/Documents/work/appspot/appspot/case_videos/models.py:
+    7  	media_id = models.IntegerField(verbose_name=_('Media ID'), unique=False, blank=False, null=False)
+    8  	update_id = models.IntegerField(verbose_name=_('Update ID'), unique=False, blank=False, null=False)
+    9: 	url = models.CharField(verbose_name=_('Url'), max_length=100, blank=False, null=False)
+   10: 	file_name = models.CharField(verbose_name=_('File name'), max_length=100, blank=False, null=False)
+   11  	media_pin = models.IntegerField(verbose_name=_('Media pin'), unique=False, blank=False, null=False)
+   12  
+
+/Users/admin/Documents/work/appspot/appspot/companies/models.py:
+    6  class Company(models.Model):
+    7  	company_id = models.AutoField(primary_key=True)
+    8: 	company_name = models.CharField(verbose_name=_('Prefix'), max_length=100, blank=False)
+    9  	company_address = USZipCodeField(max_length=9, help_text=_(''), blank=False, null=False)
+   10  	
+
+/Users/admin/Documents/work/appspot/appspot/emails/models.py:
+   13  	email_id = models.AutoField(primary_key=True) 
+   14  	person = models.ForeignKey(Person, blank=False, null=False, verbose_name=_('Person'), related_name='email_addresses')
+   15: 	email_type = models.CharField(verbose_name=_('Email type'), choices=EMAIL_TYPE)
+   16  	email_address = models.EmailField(help_text=_(''))
+   17: 	email_label = models.CharField(verbose_name=_('Email label'), max_length=100, blank=False, null=False)
+   18: 	record_owner = models.CharField(verbose_name=_('Record owner'), max_length=100, blank=False, null=False)
+   19  	record_creation_date = models.DateField(help_text=_(''))
+   20  
+
+/Users/admin/Documents/work/appspot/appspot/expense_types/models.py:
+    5  class Expense_type(models.Model):
+    6  	expense_type_id = models.AutoField(primary_key=True)
+    7: 	expense_type = models.CharField(verbose_name=_('Expense type'), max_length=100, blank=False, null=False)
+    8  
+    9  	class Meta:
+
+/Users/admin/Documents/work/appspot/appspot/genders/models.py:
+   10  class Gender(models.Model):
+   11  	gender_id = models.AutoField(primary_key=True)
+   12: 	gender = models.CharField(verbose_name=_('Gender'), choices=GENDER)
+   13  
+   14  	class Meta:
+
+/Users/admin/Documents/work/appspot/appspot/investigative_cases/models.py:
+    6  class Investigative_case(models.Model):
+    7  	investigative_case_id = models.AutoField(primary_key=True)
+    8: 	case_number = models.CharField(verbose_name=_('Case number'), max_length=100, blank=False, null=False)
+    9: 	claim_number = models.CharField(verbose_name=_('Claim number'), max_length=100, blank=False, null=False)
+   10  	injury_date = models.DateField(help_text=_(''))
+   11: 	injury = models.CharField(verbose_name=_('Injury'), max_length=100, blank=False, null=False)
+   12  	file_received_date = models.DateField(help_text=_(''))
+   13: 	case_type = models.CharField(verbose_name=_('Case type'), max_length=100, blank=False, null=False)
+   14  	client = models.ForeignKey(Person, blank=False, null=False, verbose_name=_('Person'), related_name='cases')
+   15  	primary_subject = models.ForeignKey(Person, blank=False, null=False, verbose_name=_('Person'), related_name='cases')
+   16: 	case_status = models.CharField(verbose_name=_('Case status'), max_length=100, blank=False, null=False)
+   17  	case_description = models.TextField(verbose_name=_('Case description'), max_length=500, blank=False, null=False)
+   18: 	case_dollar_budget = models.CharField(verbose_name=_('Case dollar budget'), max_length=100, blank=False, null=False)
+   19: 	case_time_budget = models.CharField(verbose_name=_('Case time budget'), max_length=100, blank=False, null=False)
+   20: 	record_owner = models.CharField(verbose_name=_('Record owner'), max_length=100, blank=False, null=False)
+   21  	record_creation_date = models.DateField(auto_now_add=True, help_text=_(''))
+   22  	primary_investigator = models.IntegerField(verbose_name=_('Primary investigator'), unique=False, blank=False, null=False)
+
+/Users/admin/Documents/work/appspot/appspot/invoice_items/models.py:
+   12  	item = models.ForeignKey(Expense_type, blank=False, null=False, verbose_name=_('Expense type'), related_name='line_items')
+   13  	quantity = models.FloatField(verbose_name=_('Quantity'), unique=False, blank=False, null=False)
+   14: 	line_description = models.CharField(verbose_name=_('Line description'), max_length=100, blank=False, null=False)
+   15  	rate = models.FloatField(verbose_name=_('Rate'), unique=False, blank=False, null=False)
+   16  	amount = models.FloatField(verbose_name=_('Amount'), unique=False, blank=False, null=False)
+
+/Users/admin/Documents/work/appspot/appspot/invoice_terms/models.py:
+    5  class Invoice_term(models.Model):
+    6  	invoice_term_id = models.AutoField(primary_key=True)
+    7: 	invoice_term = models.CharField(verbose_name=_('Invoice term'), max_length=100, blank=False, null=False)
+    8  	days = models.IntegerField(verbose_name=_('Days'), unique=False, blank=True, null=True)
+    9  
+
+/Users/admin/Documents/work/appspot/appspot/invoices/models.py:
+    8  	invoice_id = models.AutoField(primary_key=True)
+    9  	invoce_date = models.DateField(help_text=_(''), blank=False, null=False)
+   10: 	terms = models.CharField(verbose_name=_('Terms'), max_length=100, blank=False, null=False)
+   11  	term_days = models.IntegerField(verbose_name=_('Term days'), unique=False, blank=False, null=False)
+   12: 	due = models.CharField(verbose_name=_('Due'), max_length=100, blank=False, null=False)
+   13  	invoice_number = models.IntegerField(verbose_name=_('Invoice number'), unique=False, blank=False, null=False)
+   14  	customer = models.ForeignKey(Person, blank=False, null=False, verbose_name=_('Person'), related_name='invoices')
+
+/Users/admin/Documents/work/appspot/appspot/mikes_ds/models.py:
+    5  class Mike_ds(models.Model):
+    6  	mike_ds_id = models.AutoField(primary_key=True)
+    7: 	first_name = models.CharField(verbose_name=_('First name'), max_length=100, blank=False, null=False)
+    8  
+    9  	class Meta:
+
+/Users/admin/Documents/work/appspot/appspot/notes/models.py:
+    8  	notes = models.ForeignKey(Notes_header, blank=False, null=False, verbose_name=_('Notes header'), related_name='notes')
+    9  	note_time = models.DateTimeField(help_text=_(''), blank=False, null=False)
+   10: 	note_text = models.CharField(verbose_name=_('Note text'), max_length=100, blank=False, null=False)
+   11: 	time_sort_field = models.CharField(verbose_name=_('Time sort field'), max_length=100, blank=False, null=False)
+   12  	military = models.IntegerField(verbose_name=_('Military'), unique=False, blank=False, null=False)
+   13: 	record_owner = models.CharField(verbose_name=_('Record owner'), max_length=100, blank=False, null=False)
+   14  	record_creation_date = models.DateField(help_text=_(''), blank=False, null=False)
+   15  
+
+/Users/admin/Documents/work/appspot/appspot/notes_headers/models.py:
+    8  	investigative_case = models.ForeignKey(Investigative_case, blank=False, null=False, verbose_name=_('Investigative_case'), related_name='assignment')
+    9  	investigator_id = models.IntegerField(verbose_name=_('Investigator ID'), unique=False, blank=False, null=False)
+   10: 	investigator_name = models.CharField(verbose_name=_('Investigator name'), max_length=100, blank=False, null=False)
+   11  	date_worked = models.DateField(help_text=_(''))
+   12: 	weather = models.CharField(verbose_name=_('Weather'), max_length=100, blank=False, null=False)
+   13: 	notes_summary = models.CharField(verbose_name=_('Notes summary'), max_length=100, blank=False, null=False)
+   14: 	city = models.CharField(verbose_name=_('City'), max_length=100, blank=False, null=False)
+   15: 	state = models.CharField(verbose_name=_('State'), max_length=100, blank=False, null=False)
+   16  	notes_complete = models.BooleanField(help_text=_(''))
+   17  	wunderground_temp = models.FloatField(help_text=_(''))
+
+/Users/admin/Documents/work/appspot/appspot/objectives/models.py:
+    8  	investigative_case = models.ForeignKey(Investigative_case, blank=False, null=False, verbose_name=_('Investigative case'), related_name='objectives')
+    9  	number = models.IntegerField(verbose_name=_('Number'), unique=False, blank=False, null=False)
+   10: 	text = models.CharField(verbose_name=_('Text'), max_length=100, blank=False, null=False)
+   11  
+   12  	class Meta:
+
+/Users/admin/Documents/work/appspot/appspot/omc_tickets/models.py:
+    6  	omc_ticket_id = models.AutoField(primary_key=True)
+    7  	ticket_number = models.IntegerField(verbose_name=_('Ticket number'), unique=False, blank=False, null=False)
+    8: 	status = models.CharField(verbose_name=_('Status'), max_length=100, blank=False, null=False)
+    9  	date_opened = models.DateTimeField(help_text=_(''), blank=False, null=False)
+   10: 	label = models.CharField(verbose_name=_('Label'), max_length=100, blank=False, null=False)
+   11  	description = models.TextField(verbose_name=_('Description'), max_length=500, blank=False, null=False)
+   12  	resolution = models.TextField(verbose_name=_('Resolution'), max_length=500, blank=False, null=False)
+
+/Users/admin/Documents/work/appspot/appspot/payments/models.py:
+    8  	invoice = models.ForeignKey(Invoice, blank=False, null=False, verbose_name=_('Invoice'), related_name='payments')
+    9  	payment_date = models.DateField(help_text=_(''), blank=False, null=False)
+   10: 	method = models.CharField(verbose_name=_('Method'), max_length=100, blank=False, null=False)
+   11: 	reference = models.CharField(verbose_name=_('Reference'), max_length=100, blank=False, null=False)
+   12  	amount = models.FloatField(verbose_name=_('Amount'), unique=False, blank=False, null=False)
+   13  
+
+/Users/admin/Documents/work/appspot/appspot/person/models.py:
+   19  class Person(models.Model):
+   20  	person_id = models.AutoField(primary_key=True)
+   21: 	prefix = models.CharField(verbose_name=_('Prefix'), max_length=100, blank=False, null=False)
+   22: 	first_name = models.CharField(verbose_name=_('First name'), max_length=100, blank=False, null=False)
+   23: 	last_name = models.CharField(verbose_name=_('Last name'), max_length=100, blank=False, null=False)
+   24: 	middle_name = models.CharField(verbose_name=_('Middle name'), max_length=100, blank=False, null=False)
+   25: 	suffix = models.CharField(verbose_name=_('Suffix'), max_length=100, blank=False, null=False)
+   26: 	social_security_number = models.CharField(verbose_name=_('Middle name'), max_length=100, blank=False, null=False)
+   27  	date_of_birth = models.DateField(help_text=_(''))
+   28: 	gender = models.CharField(verbose_name=_('Gender'), choices=GENDER)
+   29: 	race = models.CharField(verbose_name=_('Race'), max_length=100, blank=False, null=False)
+   30  	height = models.FloatField(help_text=_(''))
+   31  	weight = models.FloatField(help_text=_(''))
+   32: 	hair = models.CharField(verbose_name=_('Hair'), max_length=100, blank=False, null=False)
+   33: 	build = models.CharField(verbose_name=_('Build'), max_length=100, blank=False, null=False)
+   34: 	eyes = models.CharField(verbose_name=_('Eyes'), max_length=100, blank=False, null=False)
+   35: 	glasses = models.CharField(verbose_name=_('Glasses'), max_length=100, blank=False, null=False)
+   36: 	record_owner = models.CharField(verbose_name=_('Record owner'), max_length=100, blank=False, null=False)
+   37  	record_creation_date = models.DateField(auto_now_add=True, help_text=_(''))
+   38: 	person_type = models.CharField(verbose_name=_('Person type'), choices=PERSON_TYPE)
+   39  	company = models.ForeignKey(Company, blank=False, null=False, verbose_name=_('Company'), related_name='company_contacts')
+   40: 	investigative_case = models.CharField(verbose_name=_('Investigative case'), max_length=100, blank=False, null=False)
+   41  	is_active = models.BooleanField(help_text=_(''))
+   42: 	relationship = models.CharField(verbose_name=_('Relationship'), max_length=100, blank=False, null=False)
+   43  
+   44  	class Meta:
+
+/Users/admin/Documents/work/appspot/appspot/phone_numbers/models.py:
+   16  	phone_number_id = models.AutoField(primary_key=True) 
+   17  	person = models.ForeignKey(Person, blank=False, null=False, verbose_name=_('Person'), related_name='phone_numbers')
+   18: 	phone_type = models.CharField(verbose_name=_('Phone type'), choices=PHONE_TYPE)
+   19  	number = PhoneNumberField(max_length=100, blank=False, help_text=_(''))
+   20: 	phone_label = models.CharField(verbose_name=_('Phone label'), max_length=100, blank=False, null=False)
+   21: 	record_owner = models.CharField(verbose_name=_('Record owner'), max_length=100, blank=False, null=False)
+   22  	record_creation_date = models.DateField(help_text=_(''))
+   23  
+
+/Users/admin/Documents/work/appspot/appspot/prefixes/models.py:
+    5  class Prefix(models.Model):
+    6  	prefix_id = models.AutoField(primary_key=True)
+    7: 	prefix = models.CharField(verbose_name=_('Prefix'), max_length=100, blank=False, null=False)
+
+/Users/admin/Documents/work/appspot/appspot/races/models.py:
+    5  class Race(models.Model):
+    6  	race_id = models.AutoField(primary_key=True)
+    7: 	race = models.CharField(verbose_name=_('Race'), max_length=100, blank=False, null=False)
+
+/Users/admin/Documents/work/appspot/appspot/relationships/models.py:
+    5  class Relationship(models.Model):
+    6  	relationship_id = models.AutoField(primary_key=True)
+    7: 	relationship = models.CharField(verbose_name=_('Relationship'), max_length=100, blank=False, null=False)
+    8  
+    9  	class Meta:
+
+/Users/admin/Documents/work/appspot/appspot/stripe_cc/models.py:
+    7  	stripe_cc_id = models.AutoField(primary_key=True)
+    8  	client = models.ForeignKey(Person, blank=False, null=False, verbose_name=_('Person'), related_name='credit_cards')
+    9: 	stripe_customer_id = models.CharField(verbose_name=_('Stripe customer ID'), max_length=100, blank=False, null=False)
+   10: 	cc_last_four = models.CharField(verbose_name=_('CC last four'), max_length=100, blank=False, null=False)
+   11  
+   12  	class Meta:
+
+/Users/admin/Documents/work/appspot/appspot/subject_images/models.py:
+    8  	person = models.ForeignKey(Person, blank=False, null=False, verbose_name=_('Person'), related_name='subject_images')
+    9  	picture = models.ImageField(upload_to = 'pic_folder/', default = 'pic_folder/None/no-img.jpg')
+   10: 	file_name = models.CharField(verbose_name=_('File name'), max_length=100, blank=False, null=False)
+   11: 	mime = models.CharField(verbose_name=_('Mime'), max_length=100, blank=False, null=False)
+   12  
+   13  	class Meta:
+
+/Users/admin/Documents/work/appspot/appspot/suffixes/models.py:
+    5  class Suffix(models.Model):
+    6  	suffix_id = models.AutoField(primary_key=True)
+    7: 	suffix = models.CharField(verbose_name=_('Suffix'), max_length=100, blank=False, null=False)
+
+/Users/admin/Documents/work/appspot/appspot/time_clock/models.py:
+    5  class Time_clock(models.Model):
+    6  	time_clock_id = models.AutoField(primary_key=True)
+    7: 	payperiod = models.CharField(verbose_name=_('Pay period'), max_length=100, blank=False, null=False)
+    8  	workdate = models.DateField(help_text=_(''), blank=False, null=False)
+    9  	timein = models.DateTimeField(help_text=_(''), blank=False, null=False)
+   10  	timeout = models.DateTimeField(help_text=_(''), blank=False, null=False)
+   11: 	original_timein = models.CharField(verbose_name=_('Original timein'), max_length=100, blank=False, null=False)
+   12: 	original_timeout = models.CharField(verbose_name=_('Original timeout'), max_length=100, blank=False, null=False)
+   13  	hoursworked = models.FloatField(blank=False, null=False)
+   14  
+
+/Users/admin/Documents/work/appspot/appspot/update_medias/models.py:
+    8  	case_update = models.ForeignKey(Update, blank=False, null=False, verbose_name=_('Update'), related_name='update_files')
+    9  	media = models.ImageField(upload_to = 'pic_folder/', default = 'pic_folder/None/no-img.jpg')
+   10: 	file_name = models.CharField(verbose_name=_('File name'), max_length=100, blank=False, null=False)
+   11: 	mime = models.CharField(verbose_name=_('Mime'), max_length=100, blank=False, null=False)
+   12  
+   13  	blob_size = models.IntegerField(verbose_name=_('Blob size'), unique=False, blank=False, null=False)
+
+/Users/admin/Documents/work/appspot/appspot/update_types/models.py:
+    5  class Update_type(models.Model):
+    6  	update_type_id = models.AutoField(primary_key=True)
+    7: 	update_type = models.CharField(verbose_name=_('Update type'), max_length=100, blank=False, null=False)
+    8  
+    9  	class Meta:
+
+/Users/admin/Documents/work/appspot/appspot/updates/models.py:
+    9  	activity_date = models.DateField(help_text=_(''), blank=False, null=False)
+   10  	activity_text = models.TextField(verbose_name=_('Activity text'), max_length=500, blank=False, null=False)
+   11: 	last_sent = models.CharField(verbose_name=_('Last sent'), max_length=100, blank=False, null=False)
+   12: 	vzaar_url = models.CharField(verbose_name=_('Vzzaar url'), max_length=100, blank=False, null=False)
+   13  
+   14  	class Meta:
+
+/Users/admin/Documents/work/appspot/appspot/users/models.py:
+    7  	email_address = models.EmailField(verbose_name=_('Email address'), max_length=254, unique=True)
+    8  	investigator_id = models.IntegerField(verbose_name=_('Investigator id'), unique=False, blank=True, null=True)
+    9: 	name = models.CharField(verbose_name=_('Name'), max_length=100)
+   10  
+   11  	class Meta:
+
+/Users/admin/Documents/work/appspot/appspot/vehicles/models.py:
+    8  	vehicle_id = models.AutoField(primary_key=True)
+    9  	person = models.ForeignKey(Person, blank=False, null=False, verbose_name=_('Person'), related_name='vehicles')
+   10: 	year = models.CharField(verbose_name=_('Vehicle'), max_length=100, blank=False, null=False)
+   11: 	make = models.CharField(verbose_name=_('Make'), max_length=100, blank=False, null=False)
+   12: 	model = models.CharField(verbose_name=_('Model'), max_length=100, blank=False, null=False)
+   13: 	color = models.CharField(verbose_name=_('Color'), max_length=100, blank=False, null=False)
+   14: 	vin = models.CharField(verbose_name=_('Vin'), max_length=100, blank=False, null=False)
+   15: 	plate = models.CharField(verbose_name=_('Plate'), max_length=100, blank=False, null=False)
+   16  	plate_expiration = models.DateField(help_text=_(''))
+   17: 	primary_owner = models.CharField(verbose_name=_('Primary owner'), max_length=100, blank=False, null=False)
+   18: 	secondary_owner = models.CharField(verbose_name=_('Secondary owner'), max_length=100, blank=False, null=False)
+   19  	registered_address = USZipCodeField(max_length=9, help_text=_(''), blank=False, null=False)
+   20: 	description = models.CharField(verbose_name=_('Description'), max_length=100, blank=False, null=False)
+   21: 	record_owner = models.CharField(verbose_name=_('Record owner'), max_length=100, blank=False, null=False)
+   22  	record_creation_date = models.DateField(help_text=_(''))
+   23  
+
+/Users/admin/Documents/work/appspot/appspot/word_zip_files/models.py:
+    6  	word_zip_file_id = models.AutoField(primary_key=True)
+    7  	file_content = models.FileField(upload_to=None);
+    8: 	file_name = models.CharField(verbose_name=_('File name'), max_length=100, blank=False, null=False)
+    9: 	mime = models.CharField(verbose_name=_('Mime'), max_length=100, blank=False, null=False)
+   10  
+   11  	class Meta:
+
+98 matches across 39 files
